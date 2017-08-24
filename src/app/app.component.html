@@ -1,0 +1,153 @@
+<nav class="navbar">
+  <a class="navbar-brand" href="https://app.revature.com/login">Revature</a>
+</nav>
+<br>
+<!-- <div style="text-align:center">
+  <form class="container" name="form" #f="ngForm" (ngSubmit)="f.submitted && f.valid">
+       <h3> User Details Form</h3>
+    <div class="form-group row" [ngClass]="{'has-error': !userName.valid && ng-touched }">
+      <label for="firstName" class="col-sm-4 col-form-label">Name:</label>
+      <div class="col-sm-6">
+        <input type="text" class="form-control" id="firstName" placeholder="Name" name="userName" minlength="4" 
+        [(ngModel)]="userName" required/>
+      </div>
+           <div *ngIf="!userName.valid && ng-touched" class="help-block">Firstname is required</div>
+         
+    </div>
+    <div class="form-group row">
+      <label for="staticEmail" class="col-sm-4 col-form-label">Email:</label>
+      <div class="col-sm-6">
+        <input type="email" class="form-control" id="email" placeholder="Email" name="emailId" required [(ngModel)]="emailId">
+      </div>
+    </div>
+    <div class="form-group row">
+      <label for="mobileNumber" class="col-sm-4 col-form-label">Mob No:</label>
+      <div class="col-sm-6">
+        <input type="text" class="form-control" id="mobileNumber" placeholder="Mobile Number" name="mobNo" [(ngModel)]="mobNo">
+      </div>
+    </div>
+    <div class="form-group row">
+      <label for="courseName" class="col-sm-4 col-form-label">Course:</label>
+      <div class="col-sm-6">
+        <select class="form-control" name="courses" [(ngModel)]="courses" >
+          <option value=''>Select Course</option>
+          <option [ngValue]="c" *ngFor="let c of courses" > {{c}} </option>
+        </select>
+      </div>
+    </div>
+    <div class="form-group row">
+      <label for="stateName" class="col-sm-4 col-form-label">State:</label>
+      <div class="col-sm-6">
+        <input type="text" class="form-control" id="stateName" placeholder="State" name="state" required [(ngModel)]="state">
+      </div>
+    </div>
+    <div class="form-group row">
+      <label for="cityName" class="col-sm-4 col-form-label">City:</label>
+      <div class="col-sm-6">
+        <input type="text" class="form-control" id="cityName" placeholder="Name" name="city" required [(ngModel)]="city">
+      </div>
+    </div>
+    <div class="centr">
+<!--       <button type="submit" class="btn btn-primary" data-toggle="modal" data-target="#myModal" >Submit</button> -->
+<!-- <button type="submit" class="btn btn-primary margin">Submit</button>
+      <button type="submit" class="btn btn-primary margin" [disabled]="userName === ''">Reset</button>
+    </div>
+  </form>
+</div> -->
+<!-- <!-- Modal -->
+<div style="text-align:center">
+  <form class="container" name="form" #f="ngForm" (ngSubmit)="f.submitted && f.valid">
+    <h3> User Details Form</h3>
+    <div class="form-group row" [ngClass]="{ 'has-error': f.submitted && !userName.valid }">
+      <label for="userName" class="col-sm-4 col-form-label">Name:</label>
+      <div class="col-sm-6">
+        <input type="text" class="form-control" name="userName" [(ngModel)]="userName" minlength="5" maxlength="10" required />
+        <div *ngIf="f.submitted && !userName.valid" class="help-block">name is required</div>  
+         <div *ngIf="userName.invalid && (userName.dirty || userName.touched || userName.focused || userName.required)" class="alert alert-danger">
+           <div *ngIf="userName.errors.minlength">
+            name must be at least 5 characters long.
+          </div> 
+        </div>
+      </div>
+    </div>
+    <div class="form-group row">
+      <label for="staticEmail" class="col-sm-4 col-form-label">Email:</label>
+      <div class="col-sm-6">
+        <input type="email" class="form-control" id="email" placeholder="Email" name="emailId" required [(ngModel)]="emailId">
+      </div>
+    </div>
+    <div class="form-group row">
+      <label for="mobileNumber" class="col-sm-4 col-form-label">Mob No:</label>
+      <div class="col-sm-6">
+        <input type="text" class="form-control" id="mobileNumber" placeholder="Mobile Number" name="mobNo" [(ngModel)]="mobNo">
+      </div>
+    </div>
+   <!--  <div class="form-group row">
+      <label for="courseName" class="col-sm-4 col-form-label">Course:</label>
+      <div class="col-sm-6">
+        <select class="form-control" name="courses" [(ngModel)]="courses">
+         <option value=''>Select Course</option>
+          <option [ngValue]="c" *ngFor="let c of courses"> {{c}} </option>
+        </select>
+      </div>
+    </div> -->
+    <div class="form-group row">
+      <label for="stateName" class="col-sm-4 col-form-label">State:</label>
+      <div class="col-sm-6">
+        <input type="text" class="form-control" id="stateName" placeholder="State" name="state" required [(ngModel)]="state">
+      </div>
+    </div>
+    <div class="form-group row">
+      <label for="cityName" class="col-sm-4 col-form-label">City:</label>
+      <div class="col-sm-6">
+        <input type="text" class="form-control" id="cityName" placeholder="Name" name="city" required [(ngModel)]="city">
+      </div>
+    </div>
+    <div>
+      <button type="submit" class="btn btn-primary margin" (click)="addList(f)" data-toggle="modal" data-target="#myModal">Submit</button>
+      <button type="submit" class="btn btn-primary margin" [disabled]="userName === ''">Reset</button>
+    </div>
+  </form>
+</div>
+<div class="modal fade" id="myModal" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">User Details</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <table class="table">
+          <thead class="thead-inverse">
+            <tr>
+              <th>#</th>
+              <th>Name</th>
+              <th>Email</th>
+              <th>Mob No</th>
+              <th>State</th>
+              <th>City</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">1</th>
+              <td>{{userName}}</td>
+              <td>{{emailId}}</td>
+              <td>{{mobNo}}</td>
+              <td>{{state}}</td>
+              <td>{{city}}</td>
+              <button type="button" class="btn btn-primary" (click)="editList(f)">Edit</button>
+        <button type="button" class="btn btn-primary">Delete</button>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>

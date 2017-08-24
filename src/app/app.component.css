@@ -1,0 +1,29 @@
+/*.container {
+  padding-top: 50px;
+  padding-left: 300px;
+}*/
+
+/*.centr {
+padding-top:40px;
+padding-left:400px;
+}*/
+
+.navbar {
+  border: 10px #D3D3D3 solid;
+  border-width: thin;
+  background: #D3D3D3;
+  text-align: left;
+}
+
+.navbar-brand {
+  color: black;
+}
+
+.margin{
+	margin-left:10px;
+}
+
+
+.align{
+margin-right:150px;
+}
