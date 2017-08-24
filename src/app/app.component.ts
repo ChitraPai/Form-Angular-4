@@ -1,6 +1,4 @@
-/*
-App Component ts
-*/
+
 import { Component } from '@angular/core';
 import {NgForm} from '@angular/forms';
 import { ReactiveFormsModule,
